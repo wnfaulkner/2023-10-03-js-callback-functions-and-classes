@@ -100,127 +100,149 @@ class Airplane {
 
     // Exercise 1
 
-    // A fellow student shows you this code.  When he runs it, he expects it to
-    // wait three seconds, then write "Ding!" to the console.  Instead, it writes
-    // "Ding!" immediately.  Find the bug and fix it.
+        // A fellow student shows you this code.  When he runs it, he expects it to
+        // wait three seconds, then write "Ding!" to the console.  Instead, it writes
+        // "Ding!" immediately.  Find the bug and fix it.
 
-    function writeDing() {
-        console.log('Ding!');
-    }
-    
-    //let timerId = setTimeout(writeDing(), 3000);
-    //let timerId = setTimeout(writeDing, 3000); //remove parentheses
+        function writeDing() {
+            console.log('Ding!');
+        }
+        
+        //let timerId = setTimeout(writeDing(), 3000);
+        //let timerId = setTimeout(writeDing, 3000); //remove parentheses
 
 
     // Exercise 2
 
-    // Javascript arrays have a built-in sort method that can take
-    // a callback to tell it how to compare the things you want to sort.
+        // Javascript arrays have a built-in sort method that can take
+        // a callback to tell it how to compare the things you want to sort.
 
-    // Research the array sort method.
+        // Research the array sort method.
 
-    // Write the sorting callback as a named function declaration
+        // Write the sorting callback as a named function declaration
 
-    // Write the callback function to provide to the sort method so that
-    // the following code sorts the words from shortest to longest.
+        // Write the callback function to provide to the sort method so that
+        // the following code sorts the words from shortest to longest.
 
-    const words = ['short', 'medium', 'delicious', 'nice', 'lengthy'];
+        const words = ['short', 'medium', 'delicious', 'nice', 'lengthy'];
 
-    const sortStringsByNumChars = function(string1, string2){
-            return string1.length-string2.length
-        }
+        const sortStringsByNumChars = function(string1, string2){
+                return string1.length-string2.length
+            }
 
 
-    // The sort method sorts "in place", that is, it modifies the array
-    // console.log(words.sort(sortStringsByNumChars))
-    // console.log(words)
+        // The sort method sorts "in place", that is, it modifies the array
+        // console.log(words.sort(sortStringsByNumChars))
+        // console.log(words)
 
-    // Check that logging words now outputs
-    // ["nice", "short", "medium", "lengthy", "delicious"]
+        // Check that logging words now outputs
+        // ["nice", "short", "medium", "lengthy", "delicious"]
 
     // Exercise 3
-    
-    // Filter the words array from above to create a new array
-    // named longWords that includes only the words with 7 or more
-    // characters
-    
-    const filterOutWordsShorterThanSevenChars = (string) => string.length > 6
-    const longWords = words.filter(filterOutWordsShorterThanSevenChars);
-    //console.log(longWords)
+        
+        // Filter the words array from above to create a new array
+        // named longWords that includes only the words with 7 or more
+        // characters
+        
+        const filterOutWordsShorterThanSevenChars = (string) => string.length > 6
+        const longWords = words.filter(filterOutWordsShorterThanSevenChars);
+        //console.log(longWords)
 
-    // Check that logging longWords outputs
-    // ["lengthy", "delicious"]
+        // Check that logging longWords outputs
+        // ["lengthy", "delicious"]
 
     // Exercise 4
 
-    // Code a forEach method:
-    // 		1. Write a function named forEach.
-    //		2. The forEach function accepts two args, an array & a callback.
-    //		3. Code the forEach method such that it iterates over each element in the array arg (use a for loop).
-    //		4. For each iteration, invoke the callback arg, passing to it, the element and the index of the element.
+        // Code a forEach method:
+        // 		1. Write a function named forEach.
+        //		2. The forEach function accepts two args, an array & a callback.
+        //		3. Code the forEach method such that it iterates over each element in the array arg (use a for loop).
+        //		4. For each iteration, invoke the callback arg, passing to it, the element and the index of the element.
 
-    // Test with this array
-    const colors = ['red', 'green', 'blue', 'purple'];
-    //and this callback
-    function log(elem, idx) {
-        console.log(`Index: ${idx} / Element Value: ${elem}`);
-    }
-
-    function forEach(array, callBackFunction){
-        for(i = 0; i < array.length; i++){
-            let elem = array[i]
-            let idx = i
-            elem = callBackFunction(elem, idx)            
+        // Test with this array
+        const colors = ['red', 'green', 'blue', 'purple'];
+        //and this callback
+        function log(elem, idx) {
+            console.log(`Index: ${idx} / Element Value: ${elem}`);
         }
-    }
 
-    //forEach(colors, log) //TEST
+        function forEach(array, callBackFunction){
+            for(let i = 0; i < array.length; i++){
+                let string = array[i]
+                let index = i
+                elem = callBackFunction(string, index)            
+            }
+        }
 
-    // calling forEach(colors, log) should resulting in this output:
-    // Index: 0 / Element Value: red
-    // Index: 1 / Element Value: green
-    // Index: 2 / Element Value: blue
-    // Index: 3 / Element Value: purple
+        //forEach(colors, log) //TEST
+
+        // calling forEach(colors, log) should resulting in this output:
+        // Index: 0 / Element Value: red
+        // Index: 1 / Element Value: green
+        // Index: 2 / Element Value: blue
+        // Index: 3 / Element Value: purple
 
     // Exercise 5
 
-    function step1(cb) {
-        setTimeout(function() {
-        console.log('STEP 1 COMPLETE');
-        cb()
-        }, 750);
-    }
-    
-    function step2(cb) {
-        setTimeout(function() {
-        console.log('STEP 2 COMPLETE');
-        cb()
-        }, 500);
-    }
+        //console.log(cb())
+
+        function step1(cb) {
+            setTimeout(function() {
+            console.log('STEP 1 COMPLETE');
+            cb()
+            }, 750);
+        }
         
-    function step3(cb) {
-        setTimeout(function() {
-        console.log('STEP 3 COMPLETE');
-        cb()
-        }, 250);
-    }
-    
-    /*
-    The above functions are working asynchronous functions - DO NOT
-    change any of their code. They are what we call "black boxes"
-    because we do not need to know anything that goes on inside of them.
-    
-    Each of the three functions accept a single argument - a callback function.
-    
-    Write the code that invokes the three functions such that the output in the console will be:
-    
-    STEP 1 COMPLETE
-    STEP 2 COMPLETE
-    STEP 3 COMPLETE
-    FINISHED
-    
-    Hints: 
-    - Call `step1` first.
-    - You cannot call `step2` until after `step1` has "finished", similarly, you cannot call `step3` until `step2` has "finished".
-    - You must console.log the last line of the output, `FINISHED`, after `step3` has "finished".
-    */
+        function step2(cb) {
+            setTimeout(function() {
+            console.log('STEP 2 COMPLETE');
+            cb()
+            }, 500);
+        }
+            
+        function step3(cb) {
+            setTimeout(function() {
+            console.log('STEP 3 COMPLETE');
+            cb()
+            }, 250);
+        }
+
+        // function runSteps(){ //my original attempt: doesn't work because setTimeout waits a specified amount of time before executing the function, and they are purposefully set up so that step 1 takes longest, etc.
+        //     step1(makeTwo)
+        //     step2(makeTwo)
+        //     step3(makeTwo)       
+        //     console.log('FINISHED')  
+        // }
+
+        // function makeTwo(){return 1 + 1}
+
+        // runSteps()
+        
+        step1(function() { //official way to do it, provided response
+            step2(function() {
+              step3(function() {
+                console.log('FINISHED');
+              });
+            });
+          });
+          
+
+        /*
+        The above functions are working asynchronous functions - DO NOT
+        change any of their code. They are what we call "black boxes"
+        because we do not need to know anything that goes on inside of them.
+        
+        Each of the three functions accept a single argument - a callback function.
+        
+        Write the code that invokes the three functions such that the output in the console will be:
+        
+        STEP 1 COMPLETE
+        STEP 2 COMPLETE
+        STEP 3 COMPLETE
+        FINISHED
+        
+        Hints: 
+        - Call `step1` first.
+        - You cannot call `step2` until after `step1` has "finished", similarly, you cannot call `step3` until `step2` has "finished".
+        - You must console.log the last line of the output, `FINISHED`, after `step3` has "finished".
+        */
